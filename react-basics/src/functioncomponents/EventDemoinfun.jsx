@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 const EventDemoinfun = () => {
     let handleClick=()=>{
@@ -8,7 +8,7 @@ const EventDemoinfun = () => {
         alert(a+b)
     }
   return (
-    <div>
+    <Fragment>
         <button type="button" className="btn btn-primary me-3"
         onClick={()=>alert('Button clicked')}> Click Me  </button>
         
@@ -20,7 +20,7 @@ const EventDemoinfun = () => {
 
     <button type="button" className="btn btn-primary me-2"
         onClick={()=>handleClick1(2,3)}>  Click Me </button>
-    </div>
+    </Fragment>
   )
 }
 

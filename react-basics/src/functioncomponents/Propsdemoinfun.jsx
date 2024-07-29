@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 
 // const Propsdemoinfun = (props) => {
 //     console.log(props) //read only
@@ -19,10 +19,10 @@ import React from 'react'
 
 const Propsdemoinfun = ({username,address,children}) => {
   return (
-    <div>
+    <React.Fragment>
        {address}<br/>
        {children} 
-    </div>
+    </React.Fragment>
   )
 }
 
