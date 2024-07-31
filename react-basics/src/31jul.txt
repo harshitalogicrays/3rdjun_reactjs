@@ -1,0 +1,42 @@
+css - 
+1. inline css -
+<h1 style={{color:'red',backgroundColor:'yellow'}}>heading</h1>
+
+2. css variable  -
+3. css file  - .css 
+import 'path'
+All the children of the component where we have imported css file can use css file without importing
+
+4. css module  -  .module.css 
+import cssmodule from 'path'
+have to import in the component where we want to use it
+
+5. bootstrap  - div class="container"
+
+6. react-bootstrap  - css bootstrap component -> <Container></Container>
+
+7. styled-components  -> npm i styled-components
+
+form validations - 
+
+list rendering - array fetch - map()
+let arr=[]
+let newarr  = arr.map((item,i)=>item+2)
+
+
+let products = [
+    {id:1,name:'product1',price:20000,category:'category1',stock:30},
+    {id:1,name:'product1',price:20000,category:'category1',stock:30},
+    {id:1,name:'product1',price:20000,category:'category1',stock:30},
+    {id:1,name:'product1',price:20000,category:'category1',stock:30},
+    {id:1,name:'product1',price:20000,category:'category1',stock:30},
+    ]
+
+==============================================================================
+routing 
+list - table , card 
+form validation - with one error object 
+=============================================
+lifting the state up 
+react hook form 
+==================================================

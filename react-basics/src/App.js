@@ -7,10 +7,15 @@ import Propsdemoinfun from './functioncomponents/Propsdemoinfun';
 import Statedemoinfun from './functioncomponents/Statedemoinfun';
 import Additionwithtextbox from './functioncomponents/Additionwithtextbox';
 import RegistrationForm from './functioncomponents/RegistrationForm';
+import CSSDemo from './functioncomponents/CSSDemo';
+import cssmodule from './app.module.css'
+import FormValidations from './functioncomponents/FormValidations';
+import ListRendering from './functioncomponents/ListRendering';
 function App() {
   return (
     <div className='container'>
-      <h1 className='text-danger'>Hello React</h1>
+      {/* <h1 className='text-danger App'>Hello React</h1>
+      <h1 className={cssmodule.error}>Hello React</h1> */}
       {/* <Firstfuncompdemo></Firstfuncompdemo>  
       <hr/>
       <Firstclasscompdemo/>
@@ -26,7 +31,10 @@ function App() {
       {/* <Statedemoinfun/> */}
 
       {/* <Additionwithtextbox/> */}
-        <RegistrationForm/>
+        {/* <RegistrationForm/> */}
+        {/* <CSSDemo size={30}/> */}
+        {/* <FormValidations/> */}
+        <ListRendering/>
       </div>
    
   );
