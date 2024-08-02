@@ -11,9 +11,15 @@ import CSSDemo from './functioncomponents/CSSDemo';
 import cssmodule from './app.module.css'
 import FormValidations from './functioncomponents/FormValidations';
 import ListRendering from './functioncomponents/ListRendering';
+import Products from './functioncomponents/Products';
+import FormValidationwitherrorobj from './functioncomponents/FormValidationwitherrorobj';
+import Navbar from './Navbar';
+import { Col, Container, Row } from 'react-bootstrap';
+import Sidebar from './Sidebar';
+import { Outlet } from 'react-router-dom';
 function App() {
   return (
-    <div className='container'>
+   <>
       {/* <h1 className='text-danger App'>Hello React</h1>
       <h1 className={cssmodule.error}>Hello React</h1> */}
       {/* <Firstfuncompdemo></Firstfuncompdemo>  
@@ -34,9 +40,22 @@ function App() {
         {/* <RegistrationForm/> */}
         {/* <CSSDemo size={30}/> */}
         {/* <FormValidations/> */}
-        <ListRendering/>
-      </div>
-   
+        {/* <ListRendering/> */}
+        {/* <Products/> */}
+
+        {/* <FormValidationwitherrorobj/> */}
+
+        <Navbar></Navbar>
+        <Row>
+          <Col xs={2}><Sidebar/></Col>
+          <Col>
+               <Container>
+                    <Outlet/>
+               </Container>
+          </Col>
+        </Row>
+       
+        </>
   );
 }
 
