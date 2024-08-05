@@ -7,24 +7,26 @@ const FormValidationwitherrorobj = () => {
     let [errors,setErrors]=useState({unameerr:'',emailerr:''})
     let checkuname=()=>{
         if(user.username==''){
-            setErrors({...errors,unameerr:"username is required"});
+            setErrors((prevErrors)=>({...prevErrors,unameerr:'username is required'}))
             return false
         }
         else {
-            setErrors({...errors,unameerr:""});return true
+            setErrors((prevErrors)=>({...prevErrors,unameerr:''}));return true
         }
     }
 
     let checkemail=()=>{
         let pat = /^[\w\!\#\%\^\&\*\-\.]+\@[\w]+\.[a-zA-Z]{3}$/
         if(user.email==''){
-            setErrors({...errors,emailerr:"email is required"});return false
+            setErrors((prevErrors)=>({...prevErrors,emailerr:'email is required'}))
+            return false
         }
         else if(!pat.test(user.email)){
-            setErrors({...errors,emailerr:"invalid email"});return false
+            setErrors((prevErrors)=>({...prevErrors,emailerr:'Invalid Email'}))
+            return false
         }
         else {
-            setErrors({...errors,emailerr:""});return true
+            setErrors((prevErrors)=>({...prevErrors,emailerr:''}));return true
         }
        
 }

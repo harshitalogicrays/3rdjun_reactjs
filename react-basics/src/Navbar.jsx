@@ -1,6 +1,7 @@
 import React from 'react'
 import { BsHouse } from 'react-icons/bs'
 import { FaArrowCircleLeft, FaLock, FaPenAlt, FaSearch, FaShoppingCart } from 'react-icons/fa'
+import { Link, NavLink } from 'react-router-dom'
 
 const Navbar = () => {
   return (
@@ -13,7 +14,10 @@ const Navbar = () => {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"><BsHouse/> Home</a>
+          <NavLink class="nav-link" to='/'   className={({ isActive }) =>
+            isActive ? "active text-danger bg-info nav-link fw-bold" : "nav-link"
+              }><BsHouse/> Home</NavLink>
+        
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
@@ -34,7 +38,22 @@ const Navbar = () => {
             <a class="nav-link" aria-current="page" href="#"><FaLock/> Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><FaPenAlt/> register</a>
+            <NavLink class="nav-link" to='/form/valid'   className={({ isActive }) =>
+            isActive ? "active text-danger bg-info nav-link fw-bold" : "nav-link"
+              }><FaPenAlt/> register</NavLink>
+
+            {/* <NavLink class="nav-link" to='/form/valid'   
+            style={({ isActive}) => {
+              return {
+                fontWeight: isActive ? "bold" : "",
+                color: isActive ? "red" : "",
+                backgroundColor: isActive ? "aqua" : "",
+              };
+            }}
+            className={({ isActive }) =>
+              isActive ? "active nav-link" : "nav-link"
+                }
+            ><FaPenAlt/> register</NavLink> */}
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"><FaArrowCircleLeft/> Logout</a>

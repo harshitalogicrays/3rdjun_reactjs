@@ -1,18 +1,21 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
     let links=[
-        {url:'',text:'props demo'},
-        {url:'',text:'state demo'},
-        {url:'',text:'form'},
-        {url:'',text:'List'},
-        {url:'',text:'products'},
-        {url:'',text:'form validations'},
+        {url:'/props',text:'props demo'},
+        {url:'/state',text:'state demo'},
+        {url:'/form',text:'form'},
+        {url:'/list/basic',text:'List'},
+        {url:'/products',text:'products'},
+        {url:'/form/valid',text:'form validations'},
+        {url:'/lifting',text:'Lifting the state up '},
+        {url:'/reacthookform',text:'React Hook Form Demo'},
     ]
   return (
     <ul class="nav flex-column">
         {links.map((item,i)=><li class="nav-item" key={i}>
-                        <a class="nav-link" aria-current="page" href="#">{item.text}</a>
+                        <Link class="nav-link" to={item.url}>{item.text}</Link>
                         </li>
         )}
   </ul>

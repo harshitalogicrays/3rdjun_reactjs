@@ -20,8 +20,9 @@ import React from 'react'
 const Propsdemoinfun = ({username,address,children}) => {
   return (
     <React.Fragment>
-       {address}<br/>
-       {children} 
+      <h1>Props demo component</h1>
+       {/* {address}<br/>
+       {children}  */}
     </React.Fragment>
   )
 }

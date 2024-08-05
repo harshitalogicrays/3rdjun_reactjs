@@ -13,10 +13,10 @@ import FormValidations from './functioncomponents/FormValidations';
 import ListRendering from './functioncomponents/ListRendering';
 import Products from './functioncomponents/Products';
 import FormValidationwitherrorobj from './functioncomponents/FormValidationwitherrorobj';
-import Navbar from './Navbar';
 import { Col, Container, Row } from 'react-bootstrap';
 import Sidebar from './Sidebar';
 import { Outlet } from 'react-router-dom';
+import Navbar from './Navbar';
 function App() {
   return (
    <>
@@ -45,16 +45,15 @@ function App() {
 
         {/* <FormValidationwitherrorobj/> */}
 
-        <Navbar></Navbar>
+        <Navbar/>
         <Row>
           <Col xs={2}><Sidebar/></Col>
           <Col>
-               <Container>
-                    <Outlet/>
-               </Container>
+          <Container className='mt-5'>
+            <Outlet/>
+           </Container>
           </Col>
-        </Row>
-       
+       </Row>
         </>
   );
 }

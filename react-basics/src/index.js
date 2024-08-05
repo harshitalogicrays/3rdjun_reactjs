@@ -11,7 +11,7 @@ import Routing from './Routing';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
-        <Routing/>
+       <Routing/>
     </BrowserRouter>
 );
 
