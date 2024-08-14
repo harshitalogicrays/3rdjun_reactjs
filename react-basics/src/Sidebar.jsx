@@ -11,6 +11,8 @@ const Sidebar = () => {
         {url:'/form/valid',text:'form validations'},
         {url:'/lifting',text:'Lifting the state up '},
         {url:'/reacthookform',text:'React Hook Form Demo'},
+        {url:'/hooks',text:'React Hook useEffect,useCallback and useRef Demo'},
+        {url:'/usememo',text:'useMemo Demo'},
     ]
   return (
     <ul class="nav flex-column">

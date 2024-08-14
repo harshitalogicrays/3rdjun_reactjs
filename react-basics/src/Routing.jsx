@@ -11,6 +11,8 @@ import Pagenotfound from './Pagenotfound'
 import Home from './functioncomponents/Home'
 import LiftingstateupParent from './functioncomponents/LiftingstateupParent'
 import ReactHookForm from './functioncomponents/ReactHookForm'
+import HooksEffectCallbaclRefdemo from './functioncomponents/HooksEffectCallbaclRefdemo'
+import Usememodemo from './functioncomponents/Usememodemo'
 
 const Routing = () => {
   return (
@@ -26,6 +28,8 @@ const Routing = () => {
               <Route path='products' element={<Products/>}/>
               <Route path='lifting' element={<LiftingstateupParent/>}/>
               <Route path='reacthookform' element={<ReactHookForm/>}/>
+              <Route path='hooks' element={<HooksEffectCallbaclRefdemo/>}/>
+              <Route path='usememo' element={<Usememodemo/>}/>
           </Route>
 
           <Route path="*" element={<Pagenotfound/>}/>
