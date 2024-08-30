@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image1 from '../assets/images/register.png'
 const FormValidations = () => {
     let initialstate ={username:"",email:'',password:'',cpassword:''}
     let [user,setUser]=useState({...initialstate})
     let [unameerr,setUnameerr]=useState('')
     let [emailerr,setEmailerr]=useState('')
+    let focusRef = React.useRef()
     let checkuname=()=>{
             if(user.username==''){
                 setUnameerr("username is required");return false
@@ -31,6 +32,14 @@ const FormValidations = () => {
             e.preventDefault() }
         else 
               alert(JSON.stringify(user))}
+
+    useEffect(()=>{
+        focusRef.current.focus()
+    },[])
+    useEffect(()=>{
+        focusRef.current.style.color='orange'
+    },[user.username])
+
   return (
     <div className='row shadow p-3 mt-5'>
         <div className="col"> 
@@ -40,7 +49,7 @@ const FormValidations = () => {
             <form onSubmit={handleData}>
                 <div className="mb-3">
                     <label htmlFor="" className="form-label">Username</label>
-                    <input  type="text"  name="username" className="form-control" 
+                    <input  type="text"  name="username" className="form-control"  ref={focusRef}
                     value={user.username} onChange={(e)=>setUser({...user,username:e.target.value})} onBlur={checkuname}/>
                     {unameerr && <span className='text-danger'>{unameerr}</span>}
                 </div>

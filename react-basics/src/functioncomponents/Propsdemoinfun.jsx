@@ -17,12 +17,13 @@
 
 import React from 'react'
 
-const Propsdemoinfun = ({username,address,children}) => {
+const Propsdemoinfun = ({username,address="Pune",children}) => {
   return (
     <React.Fragment>
       <h1>Props demo component</h1>
-       {/* {address}<br/>
-       {children}  */}
+
+       {address}<br/>
+       {/* {children}  */}
     </React.Fragment>
   )
 }

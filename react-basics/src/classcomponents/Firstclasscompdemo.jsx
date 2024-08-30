@@ -22,7 +22,6 @@ export default class Firstclasscompdemo extends Component {
     return (
       <div>
         <h1>Firstclasscomp called</h1>
-        <Firstfuncompdemo/>
       </div>
     )
   }

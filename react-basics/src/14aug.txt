@@ -7,7 +7,6 @@ function definition store in cache -> useCallback hook
 useMemo - cache the result of a calculation 
 
 ===================================================
-28th Aug -
 ref - 
 
 class component - 

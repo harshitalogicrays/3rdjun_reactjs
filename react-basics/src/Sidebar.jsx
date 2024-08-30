@@ -13,6 +13,7 @@ const Sidebar = () => {
         {url:'/reacthookform',text:'React Hook Form Demo'},
         {url:'/hooks',text:'React Hook useEffect,useCallback and useRef Demo'},
         {url:'/usememo',text:'useMemo Demo'},
+        {url:'/ref',text:'useRef Demo'},
     ]
   return (
     <ul class="nav flex-column">

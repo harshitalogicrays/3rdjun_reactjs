@@ -13,6 +13,10 @@ import LiftingstateupParent from './functioncomponents/LiftingstateupParent'
 import ReactHookForm from './functioncomponents/ReactHookForm'
 import HooksEffectCallbaclRefdemo from './functioncomponents/HooksEffectCallbaclRefdemo'
 import Usememodemo from './functioncomponents/Usememodemo'
+import RefDemoinfun from './functioncomponents/RefDemoinfun'
+import Firstclasscompdemo from './classcomponents/Firstclasscompdemo'
+import PropsandEvent from './classcomponents/PropsandEvent'
+import Stateclassdemo from './classcomponents/Stateclassdemo'
 
 const Routing = () => {
   return (
@@ -30,6 +34,15 @@ const Routing = () => {
               <Route path='reacthookform' element={<ReactHookForm/>}/>
               <Route path='hooks' element={<HooksEffectCallbaclRefdemo/>}/>
               <Route path='usememo' element={<Usememodemo/>}/>
+              <Route path='ref' element={<RefDemoinfun/>}/>
+
+              <Route path='classdemo' element={<Firstclasscompdemo/>}/>
+              <Route path='peclass' element={<PropsandEvent username={111} isActive={true}
+              hobbies={["badminton","circket","travelling","dance"]}>
+                <h1>children1</h1>
+                <Firstclasscompdemo/>
+              </PropsandEvent>}/>
+              <Route path='stateclass' element={<Stateclassdemo/>}/>
           </Route>
 
           <Route path="*" element={<Pagenotfound/>}/>
