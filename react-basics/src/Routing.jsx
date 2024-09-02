@@ -17,6 +17,8 @@ import RefDemoinfun from './functioncomponents/RefDemoinfun'
 import Firstclasscompdemo from './classcomponents/Firstclasscompdemo'
 import PropsandEvent from './classcomponents/PropsandEvent'
 import Stateclassdemo from './classcomponents/Stateclassdemo'
+import Forminclass from './classcomponents/Forminclass'
+import LifeCycleMethods from './classcomponents/LifeCycleMethods'
 
 const Routing = () => {
   return (
@@ -42,7 +44,9 @@ const Routing = () => {
                 <h1>children1</h1>
                 <Firstclasscompdemo/>
               </PropsandEvent>}/>
-              <Route path='stateclass' element={<Stateclassdemo/>}/>
+              <Route path='stateclass' element={<Stateclassdemo contact="Pune"/>}/>
+              <Route path='stateform' element={<Forminclass/>}/>
+              <Route path='statelifecycle' element={<LifeCycleMethods contact="Pune"/>}/>
           </Route>
 
           <Route path="*" element={<Pagenotfound/>}/>
