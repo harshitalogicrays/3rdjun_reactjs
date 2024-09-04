@@ -1,4 +1,6 @@
 import React, { Component, createRef } from 'react'
+import Errorboundarydemo from './errorboundarydemo'
+import ErrorBoundary from './ErrorBoundary'
 
 export default class LifeCycleMethods extends Component {
   constructor(props) {
@@ -6,6 +8,7 @@ export default class LifeCycleMethods extends Component {
     super(props)
     this.state = {address:'pune' }
     this.focusRef=createRef()
+    this.timer=''
   }
   static getDerivedStateFromProps(props, state){
     console.log("getDerivedStateFromProps called")
@@ -18,6 +21,9 @@ export default class LifeCycleMethods extends Component {
   componentDidMount(){
     console.log("componentDidMount called")
     this.focusRef.current.focus()
+    this.timer =setInterval(() => {
+        console.log("setinterval called")
+    }, 1000);
   }
 
   changeAddress=()=>{
@@ -30,10 +36,11 @@ export default class LifeCycleMethods extends Component {
      return true
     else return false
   }
-  componentDidUpdate(){
+  componentDidUpdate(){ 
     console.log("componentDidUpdate called")
   }
   componentWillUnmount(){
+    clearInterval(this.timer)
     console.log("componentWillUnmount called")
   }
   render() {
@@ -44,7 +51,17 @@ export default class LifeCycleMethods extends Component {
         >Change Address </button>
         
         <h1>{this.state.address}</h1>
-        <input type="text" className="form-control" ref={this.focusRef}/>
+        <input type="text" className="form-control" ref={this.focusRef}/><hr/>
+
+        
+            <Errorboundarydemo name="ram"/>
+            <Errorboundarydemo name="riya"/>
+            <Errorboundarydemo name="pavan"/>
+            <ErrorBoundary fallback="bad request">
+               <Errorboundarydemo name="meera"/>
+            </ErrorBoundary>
+
+     
       </div>
     )
   }

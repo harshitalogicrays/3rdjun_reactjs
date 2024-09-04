@@ -19,13 +19,16 @@ import PropsandEvent from './classcomponents/PropsandEvent'
 import Stateclassdemo from './classcomponents/Stateclassdemo'
 import Forminclass from './classcomponents/Forminclass'
 import LifeCycleMethods from './classcomponents/LifeCycleMethods'
+import PureCompDemo from './classcomponents/PureCompDemo'
+import Errorboundarydemo from './classcomponents/errorboundarydemo'
+import ErrorBoundary from './classcomponents/ErrorBoundary'
 
 const Routing = () => {
   return (
     <>
       <Routes>
           <Route path='/' element={<App/>}>
-              <Route path='' element={<Home/>}/>
+              <Route path='' element={<ErrorBoundary fallback="not active"><Home/></ErrorBoundary>}/>
               <Route path='props' element={<Propsdemoinfun/>}/>
               <Route path='state' element={<Statedemoinfun/>}/>
               <Route path='form' element={<RegistrationForm/>}/>
@@ -47,7 +50,8 @@ const Routing = () => {
               <Route path='stateclass' element={<Stateclassdemo contact="Pune"/>}/>
               <Route path='stateform' element={<Forminclass/>}/>
               <Route path='statelifecycle' element={<LifeCycleMethods contact="Pune"/>}/>
-          </Route>
+              <Route path='pure' element={<PureCompDemo/>}/>
+               </Route>
 
           <Route path="*" element={<Pagenotfound/>}/>
       </Routes>

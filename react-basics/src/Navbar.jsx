@@ -10,6 +10,7 @@ const Navbar = () => {
     {url:'/stateclass',text:'state demo'},
     {url:'/stateform',text:'state form demo'},
     {url:'/statelifecycle',text:'Life cycle Methods'},
+    {url:'/pure',text:'pure comp demo'},
 ]
   return (
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
