@@ -11,6 +11,7 @@ const Navbar = () => {
     {url:'/stateform',text:'state form demo'},
     {url:'/statelifecycle',text:'Life cycle Methods'},
     {url:'/pure',text:'pure comp demo'},
+    {url:'/hoc',text:'Higher Order Component demo'},
 ]
   return (
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">

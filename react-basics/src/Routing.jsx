@@ -22,6 +22,7 @@ import LifeCycleMethods from './classcomponents/LifeCycleMethods'
 import PureCompDemo from './classcomponents/PureCompDemo'
 import Errorboundarydemo from './classcomponents/errorboundarydemo'
 import ErrorBoundary from './classcomponents/ErrorBoundary'
+import MainComp from './classcomponents/MainComp'
 
 const Routing = () => {
   return (
@@ -51,6 +52,7 @@ const Routing = () => {
               <Route path='stateform' element={<Forminclass/>}/>
               <Route path='statelifecycle' element={<LifeCycleMethods contact="Pune"/>}/>
               <Route path='pure' element={<PureCompDemo/>}/>
+              <Route path='hoc' element={<MainComp/>}/>
                </Route>
 
           <Route path="*" element={<Pagenotfound/>}/>
