@@ -1,11 +1,18 @@
 // import './App.css'
 
+import { Outlet } from "react-router-dom"
+import Header from "./features/Header"
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
  <>
- <h1 className="text-3xl font-bold underline text-red-500">
-      Hello world!
-    </h1>
+ <ToastContainer position="bottom-left" autoClose={2000} hideProgressBar={false} newestOnTop={false}
+closeOnClick rtl={false} pauseOnFocusLoss={false} draggable={false} pauseOnHover={false}
+theme="colored"/>
+  <Header/>
+  <Outlet/>
  </>
   )
 }
