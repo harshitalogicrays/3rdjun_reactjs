@@ -2,8 +2,11 @@ import React from 'react'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { NavLink } from 'react-router-dom'
+import { useMyContext } from './contextdemo'
 
 const Header = () => {
+  const val = useMyContext()
+  // console.log("value = ",val)
     const navigation = [
         { name: 'Home', href: '/', current: true },
         { name: 'About', href: '/about', current: false },
@@ -29,8 +32,8 @@ const Header = () => {
             </DisclosureButton>
           </div>
           <div className="flex flex-1 items-start justify-start sm:items-stretch sm:justify-start">
-            <div className="flex flex-shrink-0 items-center text-center">
-              <span className="h-8 w-auto text-white">mini pro</span>
+            <div className="flex  text-center">
+              <span className="h-8  text-white text-center ">mini pro</span>
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
@@ -70,7 +73,7 @@ const Header = () => {
               className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
             >
               <ShoppingCartIcon aria-hidden="true" className="h-9 w-9 " />
-              <span className="absolute -top-1 -right-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full " > 0 </span>
+              <span className="absolute -top-1 -right-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full " > {val.cartItems.length} </span>
             </button>
 
             {/* Profile dropdown */}

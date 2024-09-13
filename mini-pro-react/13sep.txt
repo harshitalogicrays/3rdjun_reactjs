@@ -1,0 +1,22 @@
+props 
+
+parent ----> child 
+
+cart array 
+<Products>-------><Cart/>
+<Header>
+
+App ----> products 
+          header 
+          cart 
+
+1. const mycontext = createContext()
+2. <mycontext.Provider value="harshita">
+    {children}
+    </mycontext.Provider>
+
+3. <mycontext.Consumer></mycontext.Consumer>
+ or 
+ useContext(mycontext)
+
+ 

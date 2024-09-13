@@ -6,15 +6,18 @@ import Register from "./pages/Register";
 import Products from "./features/Products";
 import PageNotFound from "./pages/PageNotFound";
 import About from "./pages/About";
+import Contextdemo from "./features/contextdemo";
+import Cart from "./features/Cart";
 
 const router = createBrowserRouter([
-    {path:'/',element:<App/>,
+    {path:'/',element:<Contextdemo><App/></Contextdemo>,
         children:[
             {path:'',element:<Home/>},
             {path:'about',element:<About/>},
             {path:'login',element:<Login/>},
             {path:'register',element:<Register/>},
-            {path:'products',element:<Products/>}
+            {path:'products',element:<Products/>},
+            {path:'cart',element:<Cart/>}
         ]
     },
     {path:'*',element:<PageNotFound/>}

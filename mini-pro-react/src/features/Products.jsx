@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
+import { useMyContext } from './contextdemo'
 
 const Products = () => {
+  const data =useMyContext()
   const [products,setProducts]=useState([])
   let getProducts=async()=>{
     try{
@@ -17,6 +19,10 @@ const Products = () => {
     }
   }
   useEffect(()=>{getProducts()},[])
+
+  let handleCart=(product)=>{
+    data.addtocart(product)
+  }
   return (
     <div className="bg-white">
     <div className="mx-auto max-w-2xl px-2 py-1 sm:px-6 sm:py-2 lg:max-w-7xl lg:px-2">
@@ -46,7 +52,7 @@ const Products = () => {
             </div>
             <button type="button" className=' relative border-2  border-red-800 text-yellow-300 bg-black rounded-2xl py-1 px-2 mt-1 shadow-lg shadow-slate-700 hover:bg-gray-800
             hover:text-white hover:border-cyan-800'
-            onClick={()=>alert("dfsdhfjdh")}>Add to Cart</button>
+            onClick={()=>handleCart(product)}>Add to Cart</button>
           </div>
         ))}
       </div>
