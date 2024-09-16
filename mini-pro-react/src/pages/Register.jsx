@@ -1,12 +1,28 @@
+import axios from 'axios'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const Register = () => {
+  const navigate =useNavigate()
   const {register,trigger,handleSubmit,getValues,formState:{errors}}=useForm()
-  let handleData=()=>{
+  let handleData=async()=>{
     let data =getValues()
-    alert(JSON.stringify(data))
+    try{
+      // await fetch("http://localhost:3000/users",{
+      //   method:"POST",
+      //   headers:{'content-type':'application/json'},
+      //   body:JSON.stringify({...data,role:1,createdAt:new Date()})
+      // })
+      
+      await axios.post("http://localhost:3000/users",{...data,role:1,createdAt:new Date()})
+      toast.success("registered successfully")
+      navigate('/login')
+    }
+    catch(error){
+      toast.error(error.message)
+    }
   }
   return (
     <>

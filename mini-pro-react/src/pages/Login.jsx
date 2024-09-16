@@ -1,20 +1,62 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import Loader from '../features/Loader'
+import { toast } from 'react-toastify'
+import axios from 'axios'
 
 const Login = () => {
+  let [email,setEmail]=useState('')
+  let [password,setPassword]=useState('')
+  let [isLoading,setIsLoading]=useState(false)
+  const navigate = useNavigate()
+  let handleSubmit=async(e)=>{
+    e.preventDefault()
+    setIsLoading(true)
+    try{  
+       /*let res =  await fetch(`http://localhost:3000/users?email=${email}`)
+       let data =await res.json()
+       if(data.length==0){toast.error("Invalid Credentials")}
+       else{
+          if(data[0].password == password){
+            toast.success("loggedIn successfully")
+            navigate('/')
+          }
+          else toast.error("Invalid Credentials") 
+       }      */
+
+      let res  = await axios.get(`http://localhost:3000/users?email=${email}`)
+      // console.log(res)
+      if(res.data.length==0){toast.error("Invalid Credentials")}
+      else{
+         if(res.data[0].password == password){
+           toast.success("loggedIn successfully")
+           navigate('/')
+         }
+         else toast.error("Invalid Credentials") 
+      } 
+
+      setIsLoading(false)
+    }
+    catch(error){
+      toast.error(error.message)
+      setIsLoading(false)
+    }
+  }
   return (
     <>
+    {isLoading && <Loader/>}
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-3 text-center text-2xl font-bold leading-3 tracking-tight text-gray-900">  Sign In  </h2>  </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form onSubmit={handleSubmit} method="POST" className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-3 text-gray-900">
                 Email address </label>
               <div className="mt-2">
                 <input name="email"  type="email"  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                value={email} onChange={(e)=>setEmail(e.target.value)}
                 />
               </div>
             </div>
@@ -23,7 +65,7 @@ const Login = () => {
               <label htmlFor="password" className="block text-sm font-medium leading-3 text-gray-900">
                 Password </label>
               <div className="mt-2">
-                <input name="password"  type="password"  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                <input name="password"  type="password"  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"  value={password} onChange={(e)=>setPassword(e.target.value)}
                 />
               </div>
             </div>

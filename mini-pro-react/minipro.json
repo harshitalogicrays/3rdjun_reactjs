@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "id": "316b",
+      "username": "ram",
+      "email": "ram@gmail.com",
+      "password": "ram123",
+      "cpassword": "ram123",
+      "role": 1,
+      "createdAt": "2024-09-16T06:42:42.228Z"
+    },
+    {
+      "id": "e81c",
+      "username": "happy",
+      "email": "happy@gmail.com",
+      "password": "happy123",
+      "cpassword": "happy123",
+      "role": 1,
+      "createdAt": "2024-09-16T06:44:11.880Z"
+    },
+    {
+      "id": "7143",
+      "username": "neha",
+      "email": "neha@test.com",
+      "password": "neha123",
+      "cpassword": "neha123",
+      "role": 1,
+      "createdAt": "2024-09-16T07:13:28.013Z"
+    }
+  ],
+  "products": [],
+  "cart": []
+}
