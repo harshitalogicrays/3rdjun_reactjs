@@ -49,7 +49,7 @@ const Products = () => {
                 <p className="mt-1 text-sm text-gray-500">{product.category}</p>
                 <p className="text-sm text-gray-500">Available: {product.stock}</p>
               </div>
-              <p className="text-sm font-medium text-gray-900">{product.price}</p>
+              <p className="text-sm font-medium text-gray-900">&#8377;{product.price}</p>
            
             </div>
             <button type="button" className=' relative border-2  border-red-800 text-yellow-300 bg-black rounded-2xl py-1 px-2 mt-1 shadow-lg shadow-slate-700 hover:bg-gray-800

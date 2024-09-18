@@ -29,6 +29,8 @@ const Login = () => {
       if(res.data.length==0){toast.error("Invalid Credentials")}
       else{
          if(res.data[0].password == password){
+          let obj = {email:email,name:res.data[0].username,isLoggedIn:true,role:1}
+          sessionStorage.setItem("3rdjunlogin",JSON.stringify(obj))
            toast.success("loggedIn successfully")
            navigate('/')
          }

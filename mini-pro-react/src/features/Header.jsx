@@ -1,11 +1,14 @@
 import React from 'react'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useMyContext } from './contextdemo'
+import { ShowOnLogin, ShowOnLogout } from './hiddenlinks'
+import { toast } from 'react-toastify'
 
 const Header = () => {
   const val = useMyContext()
+  const redirect=useNavigate()
   // console.log("value = ",val)
     const navigation = [
         { name: 'Home', href: '/', current: true },
@@ -17,6 +20,13 @@ const Header = () => {
         return classes.filter(Boolean).join(' ')
       }
 
+      let handleLogout=()=>{
+        if(sessionStorage.getItem("3rdjunlogin") !=null){
+          sessionStorage.removeItem("3rdjunlogin")
+          toast.success('loggedout successfully')
+          redirect('/')
+        }
+      }
     return (
    <>
      <Disclosure as="nav" className="bg-gray-800">
@@ -52,7 +62,8 @@ const Header = () => {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-          <NavLink
+           <ShowOnLogout>
+                 <NavLink
                      to='/register'
                     className={({ isActive}) =>
                      isActive ? "rounded-md px-3 py-2 text-sm font-medium bg-gray-700 text-white" : "rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-yellow-400 hover:text-white"
@@ -60,7 +71,7 @@ const Header = () => {
                   >
                     Register
                   </NavLink>
-          <NavLink
+                   <NavLink
                      to='/login'
                     className={({ isActive}) =>
                      isActive ? "rounded-md px-3 py-2 text-sm font-medium bg-gray-700 text-white" : "rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-yellow-400 hover:text-white"
@@ -68,6 +79,7 @@ const Header = () => {
                   >
                     Login
                   </NavLink>
+           </ShowOnLogout>
             <Link
               type="button" to='/cart'
               className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -77,39 +89,42 @@ const Header = () => {
             </Link>
 
             {/* Profile dropdown */}
-            <Menu as="div" className="relative ml-3">
-              <div>
-                <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                  <span className="absolute -inset-1.5" />
-                  <span className="sr-only">Open user menu</span>
-                  <img
-                    alt=""
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    className="h-8 w-8 rounded-full"
-                  />
-                </MenuButton>
-              </div>
-              <MenuItems
-                transition
-                className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
-              >
-                <MenuItem>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
-                    Your Profile
-                  </a>
-                </MenuItem>
-                <MenuItem>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
-                    Settings
-                  </a>
-                </MenuItem>
-                <MenuItem>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
-                    Sign out
-                  </a>
-                </MenuItem>
-              </MenuItems>
-            </Menu>
+            <ShowOnLogin>
+              <Menu as="div" className="relative ml-3">
+                <div>
+                  <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <span className="absolute -inset-1.5" />
+                    <span className="sr-only">Open user menu</span>
+                    <img
+                      alt=""
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      className="h-8 w-8 rounded-full"
+                    />
+                  </MenuButton>
+                </div>
+                <MenuItems
+                  transition
+                  className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+                >
+                  <MenuItem>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                      Your Profile
+                    </a>
+                  </MenuItem>
+                  <MenuItem>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                      Settings
+                    </a>
+                  </MenuItem>
+                  <MenuItem>
+                    <button className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
+                    onClick={handleLogout}>
+                      Sign out
+                    </button>
+                  </MenuItem>
+                </MenuItems>
+              </Menu>
+            </ShowOnLogin>
           </div>
         </div>
       </div>
