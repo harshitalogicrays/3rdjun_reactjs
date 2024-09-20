@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import { useMyContext } from './contextdemo';
 import { toast } from 'react-toastify';
 export const Cart = () => {
+      const location  = useLocation();
+      // console.log(location)
     const navigate = useNavigate()
       const data = useMyContext()
       let {cartItems,total,increase,decrease,removefromcart,emptycart,calculate_total} = data
@@ -11,22 +13,28 @@ export const Cart = () => {
         calculate_total()
       },[cartItems])
       let handleCheckout=async()=>{
-        if(cartItems.length !=0){
-          let obj= {cartItems,total,orderstatus:'placed',orderDate:new Date().toLocaleDateString(),
-            orderTime:new Date().toLocaleTimeString()
-          }
-            try{
-              await fetch("http://localhost:3000/orders",{
-                method:"POST",
-                headers:{'content-type':'application/json'},
-                body:JSON.stringify(obj)
-              })
-              toast.success("order placed")
-              emptycart()
-              navigate('/')
-            }
-            catch(err){toast.error(err.message)}
+        if(sessionStorage.getItem("3rdjunlogin")==null){
+          navigate('/login',{state:{from:location.pathname}})
         }
+        else {
+          if(cartItems.length !=0){
+            let obj= {cartItems,total,orderstatus:'placed',orderDate:new Date().toLocaleDateString(),
+              orderTime:new Date().toLocaleTimeString()
+            }
+              try{
+                await fetch("http://localhost:3000/orders",{
+                  method:"POST",
+                  headers:{'content-type':'application/json'},
+                  body:JSON.stringify(obj)
+                })
+                toast.success("order placed")
+                emptycart()
+                navigate('/')
+              }
+              catch(err){toast.error(err.message)}
+          }
+        }
+      
       }
       return (
         <div className="max-w-7xl mx-auto p-8 bg-gray-100">

@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useMyContext } from './contextdemo'
 import { ShowOnLogin, ShowOnLogout } from './hiddenlinks'
 import { toast } from 'react-toastify'
+import ThemeBtn from './ThemeBtn'
 
 const Header = () => {
   const val = useMyContext()
@@ -27,6 +28,15 @@ const Header = () => {
           redirect('/')
         }
       }
+      let [username,setUsername]=useState("Guest")
+      useEffect(()=>{
+        if(sessionStorage.getItem("3rdjunlogin") != null)
+        {
+          let obj = JSON.parse(sessionStorage.getItem("3rdjunlogin"))
+          setUsername(obj.name)
+        }
+        else setUsername("Guest")
+      },[sessionStorage.getItem("3rdjunlogin")])
     return (
    <>
      <Disclosure as="nav" className="bg-gray-800">
@@ -61,6 +71,9 @@ const Header = () => {
               </div>
             </div>
           </div>
+
+          <ThemeBtn/>
+          
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
            <ShowOnLogout>
                  <NavLink
@@ -90,6 +103,10 @@ const Header = () => {
 
             {/* Profile dropdown */}
             <ShowOnLogin>
+
+            <a className="rounded-md px-3 py-2 text-sm font-medium text-white" >
+                   Welcome {username}
+                  </a>
               <Menu as="div" className="relative ml-3">
                 <div>
                   <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">

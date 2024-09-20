@@ -8,9 +8,10 @@ import PageNotFound from "./pages/PageNotFound";
 import About from "./pages/About";
 import Contextdemo from "./features/contextdemo";
 import Cart from "./features/Cart";
+import ThemeContext from "./features/ThemeContext";
 
 const router = createBrowserRouter([
-    {path:'/',element:<Contextdemo><App/></Contextdemo>,
+    {path:'/',element:<ThemeContext><Contextdemo><App/></Contextdemo></ThemeContext>,
         children:[
             {path:'',element:<Home/>},
             {path:'about',element:<About/>},
