@@ -13,3 +13,9 @@ if(sessionStorage.getItem("3rdjunlogin") ==null){
 else  return null
 }
 
+
+export const Protected = ({children})=>{
+    if(sessionStorage.getItem("3rdjunlogin") !=null){
+        return children }
+    else  return <Navigate to='/login'  replace={true}/>
+}

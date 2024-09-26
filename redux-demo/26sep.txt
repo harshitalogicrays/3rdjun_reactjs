@@ -1,0 +1,13 @@
+view ----> action (dispatch)
+
+
+redux toolkit - create action based of reducers
+
+store ------> select ----> view 
+state        useSelector
+user 
+product
+order
+cart 
+filter
+checkout
