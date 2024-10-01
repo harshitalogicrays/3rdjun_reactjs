@@ -1,9 +1,28 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { BsHouse } from 'react-icons/bs'
 import { FaArrowCircleLeft, FaLock, FaPenAlt, FaSearch, FaShoppingCart } from 'react-icons/fa'
-import { Link, NavLink } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { LOGOUT_USER, selectIsLoggedIn, selectName } from '../redux/authSlice'
+import { toast } from 'react-toastify'
+import { ShowOnLogin, ShowOnLogout } from './hiddenlinks'
 
 const Navbar = () => {
+const dispatch = useDispatch()
+const navigate = useNavigate()
+
+const isLoggedIn = useSelector(selectIsLoggedIn)
+const name = useSelector(selectName)
+  let handleLogout=()=>{
+    if(isLoggedIn){
+      dispatch(LOGOUT_USER())
+      toast.success("LoggedOut Successfully")
+      navigate('/')
+    }
+  }
+let [username,setUsername]=useState('')
+useEffect(()=>{
+  if(name){setUsername(name)}},[isLoggedIn])
  return (
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="container-fluid">
@@ -37,23 +56,26 @@ const Navbar = () => {
             <span  class="badge rounded-pill text-bg-danger">0</span  >
             </a>
           </li>
-          <li class="nav-item">
-          <NavLink class="nav-link" to='/login'   className={({ isActive }) =>
-            isActive ? "active text-danger bg-info nav-link fw-bold" : "nav-link"
-              }><FaPenAlt/> Login</NavLink>
-          </li>
-          <li class="nav-item">
-            <NavLink class="nav-link" to='/register'   className={({ isActive }) =>
-            isActive ? "active text-danger bg-info nav-link fw-bold" : "nav-link"
-              }><FaPenAlt/> register</NavLink>
-
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Welcome Guest</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><FaArrowCircleLeft/> Logout</a>
-          </li>
+          <ShowOnLogout>
+            <li class="nav-item">
+            <NavLink class="nav-link" to='/login'   className={({ isActive }) =>
+              isActive ? "active text-danger bg-info nav-link fw-bold" : "nav-link"
+                }><FaPenAlt/> Login</NavLink>
+            </li>
+            <li class="nav-item">
+              <NavLink class="nav-link" to='/register'   className={({ isActive }) =>
+              isActive ? "active text-danger bg-info nav-link fw-bold" : "nav-link"
+                }><FaPenAlt/> register</NavLink>
+            </li>
+          </ShowOnLogout>
+          <ShowOnLogin>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Welcome {username}</a>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" onClick={handleLogout}><FaArrowCircleLeft/> Logout</button>
+            </li>
+          </ShowOnLogin>
         </ul>
       </div>
     </div>

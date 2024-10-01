@@ -5,6 +5,9 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Products from "./components/Products";
+import Dashboard from "./components/Admin/Dashboard";
+import { ProtectedAdmin } from "./components/hiddenlinks";
+import AdminLayout from "./components/Admin/AdminLayout";
 
 const router  = createBrowserRouter([
     {path:'/',element:<App/>,
@@ -13,6 +16,11 @@ const router  = createBrowserRouter([
             {path:'/login',element:<Login/>},
             {path:'/register',element:<Register/>},
             {path:'/products',element:<Products/>},
+        ]
+    },
+    {path:'/admin',element:<ProtectedAdmin><AdminLayout/></ProtectedAdmin>,
+        children:[
+            {path:'',element:<Dashboard/>}
         ]
     },
     {path:"*",element:<PageNotFound/>}

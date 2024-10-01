@@ -21,7 +21,7 @@ const Register = () => {
         }
       )
       toast.success("registered successfully")
-      navigate('/')
+      navigate('/login')
     }
     catch(err){
       toast.error(err.message)

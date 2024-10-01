@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import LoginImg from '/src/assets/images/login.png'
 import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
+import { LOGIN_USER } from '../redux/authSlice'
 const Login = () => {
+  const dispatch = useDispatch()
   let [email,setEmail] =useState('')
   let [password,setPassword]=useState('')
   const navigate = useNavigate()
@@ -21,7 +24,9 @@ const Login = () => {
             else{
               toast.success("loggedIn successfully")
               navigate('/')
-            }     
+            }  
+            let obj = {email:data[0].email,name:data[0].username,id:data[0].id,role:data[0].role} 
+            dispatch(LOGIN_USER(obj))  
          }
          else toast.error("Invalid Credentials") 
        }
