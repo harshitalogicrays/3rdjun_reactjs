@@ -1,17 +1,29 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import './Sidebar.css'
+import { NavLink } from 'react-router-dom';
 const Sidebar = ({open,close}) => {
     const contentStyle = {
         transition: 'opacity 0.8s',
         opacity: open ? 1 : 0,
         visibility:open?'visible':'hidden'
       };
+      let links = [
+        {id:1,to:'/admin',text:"Dashboard"},
+        {id:2,to:'/admin/addcar',text:"Add Car"},
+        {id:3,to:'/admin/viewcar',text:"View Cars"}
+      ]
   return (
     <div className="sidebar" style={contentStyle}>
       <button type="button" className='btn-close float-end' onClick={close}></button>
-      <ul className='nav flex-column'>
+      <ul className='nav flex-column mt-5'>
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Active</a>
+        {links?.map(link=><Fragment key={link}> <NavLink  class="nav-link" to={link.to}   className={({ isActive }) =>
+            isActive ? "active text-danger bg-info nav-link fw-bold" : "nav-link"
+              } end >{link.text}</NavLink>
+              </Fragment>
+        )}
+       
+        
     </li>
       </ul>
     </div>

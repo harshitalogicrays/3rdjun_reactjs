@@ -8,6 +8,8 @@ import Products from "./components/Products";
 import Dashboard from "./components/Admin/Dashboard";
 import { ProtectedAdmin } from "./components/hiddenlinks";
 import AdminLayout from "./components/Admin/AdminLayout";
+import AddCar from "./components/Admin/AddCar";
+import ViewCars from "./components/Admin/ViewCars";
 
 const router  = createBrowserRouter([
     {path:'/',element:<App/>,
@@ -20,7 +22,9 @@ const router  = createBrowserRouter([
     },
     {path:'/admin',element:<ProtectedAdmin><AdminLayout/></ProtectedAdmin>,
         children:[
-            {path:'',element:<Dashboard/>}
+            {path:'',element:<Dashboard/>},
+            {path:'addcar',element:<AddCar/>},
+            {path:'viewcar',element:<ViewCars/>}
         ]
     },
     {path:"*",element:<PageNotFound/>}

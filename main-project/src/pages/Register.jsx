@@ -9,7 +9,7 @@ const Register = () => {
   let handleRegister=async(e)=>{
     e.preventDefault()
     try{
-      await fetch("https://66fa4164afc569e13a9aee03.mockapi.io/users",
+      await fetch(`http://localhost:3000/users`,
         {method:"POST",
           headers:{'content-type':'application/json',
             'cookie':'',

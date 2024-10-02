@@ -1,0 +1,23 @@
+{
+  "users": [
+    {
+      "username": "Admin",
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "cpassword": "admin123",
+      "role": "0",
+      "id": 1
+    },
+    {
+      "username": "Ram",
+      "email": "ram@gmail.com",
+      "password": "ram123",
+      "cpassword": "ram123",
+      "role": "1",
+      "id": 2
+    }
+  ],
+  "cars": [],
+  "booking": [],
+  "rental": []
+}

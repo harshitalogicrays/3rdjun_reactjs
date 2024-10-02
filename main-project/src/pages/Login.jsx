@@ -12,7 +12,7 @@ const Login = () => {
   let handleSubmit=async(e)=>{
     e.preventDefault()
     try{
-      let res  = await fetch(`https://66fa4164afc569e13a9aee03.mockapi.io/users?email=${email}`)
+      let res  = await fetch(`${import.meta.env.VITE_URL}/users?email=${email}`)
       let data = await res.json()
       if(data.length==0){toast.error("Invalid Credentials")}
       else{
