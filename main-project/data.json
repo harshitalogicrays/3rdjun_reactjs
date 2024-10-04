@@ -17,7 +17,26 @@
       "id": 2
     }
   ],
-  "cars": [],
+  "cars": [
+    {
+      "model": "hundai",
+      "price": "4000",
+      "image": "http://res.cloudinary.com/harshitalogicrays1/image/upload/v1728023821/ydyt9mlzgq8magspfeuf.jpg",
+      "fuel": "Petrol",
+      "capcity": "5",
+      "availability": true,
+      "id": 1
+    },
+    {
+      "model": "toyota",
+      "price": "1000",
+      "image": "http://res.cloudinary.com/harshitalogicrays1/image/upload/v1728023874/lgcjcsfxiz9zbfielutr.png",
+      "fuel": "Diesel",
+      "capcity": "5",
+      "availability": true,
+      "id": 2
+    }
+  ],
   "booking": [],
   "rental": []
 }

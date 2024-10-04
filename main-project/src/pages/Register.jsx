@@ -9,7 +9,7 @@ const Register = () => {
   let handleRegister=async(e)=>{
     e.preventDefault()
     try{
-      await fetch(`http://localhost:3000/users`,
+      await fetch(`${import.meta.env.VITE_URL}/users`,
         {method:"POST",
           headers:{'content-type':'application/json',
             'cookie':'',

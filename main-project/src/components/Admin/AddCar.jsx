@@ -1,10 +1,50 @@
+import axios from 'axios'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 //image , model , price, fuel type, capcity
 const AddCar = () => {
-    let [car,setCar]=useState({model:'',price:'',image:'',fuel:'',capcity:''})
-    let handleSubmit=(e)=>{
+    const navigate=useNavigate()
+    let [car,setCar]=useState({model:'',price:'',image:'',fuel:'',capcity:'',availability:''})
+    let [pic,setPic]=useState()
+    let [picLoading,setPicLoading]=useState(false)
+    let handleSubmit=async(e)=>{
         e.preventDefault()
-        alert(JSON.stringify(car))
+        if(!car.model || !car.price || !car.image || !car.fuel || !car.capcity || !car.availability){
+            toast.error("please fill fields")
+        }
+        else {
+            try{
+               await axios.post(`${import.meta.env.VITE_URL}/cars`,car)
+               toast.success("car added")
+                navigate('/admin/viewcar')
+            }
+            catch(error){
+                toast.error(error.message)
+            }
+        }
+    }
+
+    let handleImage=async(img)=>{
+       setPicLoading(true)
+        if(img==undefined){toast.error("please select an image")}
+        if(img.type=="image/jpg" ||img.type=="image/jpeg" ||img.type=="image/png" ){
+            const data = new FormData()
+            data.append('file',img)
+            data.append('upload_preset','carrental')
+            data.append('cloud_name','harshitalogicrays1')
+            try{
+              let res  = await axios.post("https://api.cloudinary.com/v1_1/harshitalogicrays1/image/upload",data)
+              console.log(res.data.url)
+              setCar({...car,image:res.data.url})
+              setPicLoading(false)
+            }
+            catch(error){
+                toast.error(error.message)
+                setPicLoading(false)
+            }
+        }
+      
     }
   return (
    <div className='container col-9 bg-secondary text-white p-2'>
@@ -35,14 +75,33 @@ const AddCar = () => {
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Choose file</label>
-            <input type="file" class="form-control" name="image"/>
+            <input type="file" class="form-control" name="pic" accept='image/*'
+            onChange={(e)=>handleImage(e.target.files[0])}/>
         </div>
-        <div class="mb-3">
+        <div className="row">
+        <div class="mb-3 col">
             <label for="" class="form-label">Capacity</label>
             <input type="number" name="capcity" class="form-control"  value={car.capcity} onChange={(e)=>setCar({...car,capcity:e.target.value})}  />
         </div>
+        <div class="mb-3 col">
+            <label for="" class="form-label">Availability</label>
+            <select class="form-select" name="availability" value={car.availability}
+            onChange={(e)=>setCar({...car,availability:e.target.value})}>
+                <option value='' selected disabled>Choose </option>
+               <option value={false}>false</option>
+                <option value={true}>true</option>
+            </select>
+        </div>
+        </div>
+       
+        
         <div className="d-grid gap-2">
-        <button type="submit" class="btn btn-info"> Submit </button>
+        <button type="submit" class="btn btn-info"> 
+                {picLoading ? <div class="text-center">
+                <div class="spinner-border" role="status">
+                </div>
+                </div> : "Submit"}
+             </button>
         </div>
     </form>
    </div>
