@@ -10,7 +10,9 @@ const Sidebar = ({open,close}) => {
       let links = [
         {id:1,to:'/admin',text:"Dashboard"},
         {id:2,to:'/admin/addcar',text:"Add Car"},
-        {id:3,to:'/admin/viewcar',text:"View Cars"}
+        {id:3,to:'/admin/viewcar',text:"View Cars"},
+        {id:4,to:'/admin/addslider',text:"Add Slider Image"},
+        {id:5,to:'/admin/viewslider',text:"View Slider Image"},
       ]
   return (
     <div className="sidebar" style={contentStyle}>

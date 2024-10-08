@@ -10,6 +10,8 @@ import { ProtectedAdmin } from "./components/hiddenlinks";
 import AdminLayout from "./components/Admin/AdminLayout";
 import AddCar from "./components/Admin/AddCar";
 import ViewCars from "./components/Admin/ViewCars";
+import AddSliderImage from "./components/Admin/AddSliderImage";
+import ViewSliderImage from "./components/Admin/ViewSliderImage";
 
 const router  = createBrowserRouter([
     {path:'/',element:<App/>,
@@ -20,11 +22,15 @@ const router  = createBrowserRouter([
             {path:'/products',element:<Products/>},
         ]
     },
-    {path:'/admin',element:<ProtectedAdmin><AdminLayout/></ProtectedAdmin>,
+    {path:'/admin',element:<AdminLayout/>,
         children:[
             {path:'',element:<Dashboard/>},
             {path:'addcar',element:<AddCar/>},
-            {path:'viewcar',element:<ViewCars/>}
+            {path:'viewcar',element:<ViewCars/>},
+            {path:'editcar/:id',element:<AddCar/>},
+            {path:'addslider',element:<AddSliderImage/>},
+            {path:'viewslider',element:<ViewSliderImage/>},
+            {path:'editslider/:id',element:<AddSliderImage/>},
         ]
     },
     {path:"*",element:<PageNotFound/>}

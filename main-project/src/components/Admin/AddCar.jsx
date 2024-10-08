@@ -1,28 +1,54 @@
 import axios from 'axios'
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { selectCars } from '../../redux/carSlice'
 //image , model , price, fuel type, capcity
 const AddCar = () => {
+    const {id} =useParams() 
+   
     const navigate=useNavigate()
     let [car,setCar]=useState({model:'',price:'',image:'',fuel:'',capcity:'',availability:''})
     let [pic,setPic]=useState()
     let [picLoading,setPicLoading]=useState(false)
+
+//edit 
+const allcars = useSelector(selectCars) //[]
+const carEdit = allcars.find(item=>item.id == id) //{}
+useEffect(()=>{
+    if(id){setCar({...carEdit})}
+    else setCar({model:'',price:'',image:'',fuel:'',capcity:'',availability:''})
+},[id])
+
     let handleSubmit=async(e)=>{
         e.preventDefault()
-        if(!car.model || !car.price || !car.image || !car.fuel || !car.capcity || !car.availability){
-            toast.error("please fill fields")
+        if(!id){ //add 
+            if(!car.model || !car.price || !car.image || !car.fuel || !car.capcity || !car.availability){
+                toast.error("please fill fields")
+            }
+            else {
+                try{
+                   await axios.post(`${import.meta.env.VITE_URL}/cars`,{...car,availability:car.availability=="true"?true:false})
+                   toast.success("car added")
+                    navigate('/admin/viewcar')
+                }
+                catch(error){
+                    toast.error(error.message)
+                }
+            }
         }
-        else {
+        else { //update
             try{
-               await axios.post(`${import.meta.env.VITE_URL}/cars`,car)
-               toast.success("car added")
-                navigate('/admin/viewcar')
-            }
-            catch(error){
-                toast.error(error.message)
-            }
+                await axios.put(`${import.meta.env.VITE_URL}/cars/${id}`,{...car,availability:car.availability=="true"?true:false})
+                toast.success("car details updated")
+                 navigate('/admin/viewcar')
+             }
+             catch(error){
+                 toast.error(error.message)
+             }
         }
+       
     }
 
     let handleImage=async(img)=>{
@@ -48,7 +74,7 @@ const AddCar = () => {
     }
   return (
    <div className='container col-9 bg-secondary text-white p-2'>
-   <h1>Add Car</h1>
+   <h1>{id ? "Edit ": "Add "} Car</h1>
 
     <form onSubmit={handleSubmit}>
         <div className="row">
@@ -78,6 +104,7 @@ const AddCar = () => {
             <input type="file" class="form-control" name="pic" accept='image/*'
             onChange={(e)=>handleImage(e.target.files[0])}/>
         </div>
+        {id && <img src={car.image} height={50} width={50}/>}
         <div className="row">
         <div class="mb-3 col">
             <label for="" class="form-label">Capacity</label>
@@ -100,7 +127,7 @@ const AddCar = () => {
                 {picLoading ? <div class="text-center">
                 <div class="spinner-border" role="status">
                 </div>
-                </div> : "Submit"}
+                </div> :<> {id ? "Update" : "Submit"}</>}
              </button>
         </div>
     </form>

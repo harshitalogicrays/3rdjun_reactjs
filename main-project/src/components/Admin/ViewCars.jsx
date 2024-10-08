@@ -4,6 +4,7 @@ import { BsPen, BsTrash } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import { selectCars, STORE_CARS } from '../../redux/carSlice'
+import { Link } from 'react-router-dom'
 
 const ViewCars = () => {
   const dispatch = useDispatch()
@@ -61,7 +62,7 @@ const ViewCars = () => {
                   >Available</span> :<span class="badge rounded-pill text-bg-danger"
                   > Not Available</span>}</td>
                 <td>
-                  <button type="button" class="btn btn-success me-2"  > <BsPen/> </button>
+                  <Link type="button" class="btn btn-success me-2" to={`/admin/editcar/${car.id}`} > <BsPen/> </Link>
                   <button type="button" class="btn btn-danger" onClick={()=>handleDelete(car.id)} > <BsTrash/> </button>
                 </td>
               </tr>

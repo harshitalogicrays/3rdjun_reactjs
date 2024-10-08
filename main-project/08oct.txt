@@ -1,0 +1,7 @@
+user mgmt -
+add  -  username, email,password, role , profilepic -> store it in users json.
+view - userSlice 
+delete 
+update 
+
+=================================================================
