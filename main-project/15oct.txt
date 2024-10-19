@@ -1,0 +1,5 @@
+API calling in redux toolkit -
+1. custom API middleware 
+2. Redux Toolkit Query (RTK)
+3. AsyncThunk 
+4. Redux Saga (deprecated)

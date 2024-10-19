@@ -1,0 +1,23 @@
+class => className 
+label for => htmlFor 
+
+<div>
+    <p></p>
+    <form>
+        <input/>
+    </form>
+
+</div>
+
+create component - filename - capital 
+
+<p id="" name="" style="" class="">data</p> //attributes
+
+<Demo eid="1991" ename="frfw" sal='2222'></Demo> //properties -> props 
+
+===========================================
+Fragment 
+state 
+condition - ternary operator 
+map 
+css 

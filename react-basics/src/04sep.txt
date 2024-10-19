@@ -1,0 +1,16 @@
+error boundary - 
+pure component 
+
+
+===============================================================
+
+HTTP request -
+REST API - representional state transfer 
+
+fetch - native JS (returns a promise )
+
+axios - npm i axios (return a promise )
+
+====================================================
+
+HOC - higher order component 

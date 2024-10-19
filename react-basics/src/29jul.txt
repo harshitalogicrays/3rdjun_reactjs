@@ -1,0 +1,40 @@
+fragment - container /wrapper  
+<React.Fragment></React.Fragment>
+
+import {Fragment} from 'React'
+<Fragment></Fragment>
+
+shorthand of Fragment - <></>
+
+============================
+props -pass from parent comp to child comp 
+child can not access props but can not change the prop value (props are read only)
+
+event -
+
+variable - 
+
+
+functional component - hooks (16.2v) 
+hooks - functions with some special functionality for functional components only.
+builtin hooks - useState() , useRef(), useCallback(), useMemo(), useContext() etc.
+custom hooks - we can create our own hook 
+
+
+state variable - useState() hook 
+private mean we can use them only in the component we have created them.
+
+===================================================================================
+conditional rendering - 
+ternary operator 
+
+condition ? true jsx : false jsx (if else )
+
+short circuit operator -  condition && true  (simple if)
+
+inline css 
+==========================================================================
+list rendering - array fetch - map()
+css -
+form validations - 
+

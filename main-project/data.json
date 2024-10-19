@@ -1,0 +1,104 @@
+{
+  "users": [
+    {
+      "username": "Admin",
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "cpassword": "admin123",
+      "role": "0",
+      "id": 1
+    },
+    {
+      "username": "Ram",
+      "email": "ram@gmail.com",
+      "password": "ram123",
+      "cpassword": "ram123",
+      "role": "1",
+      "id": 2
+    }
+  ],
+  "cars": [
+    {
+      "model": "hundai",
+      "price": "4000",
+      "image": "http://res.cloudinary.com/harshitalogicrays1/image/upload/v1728023821/ydyt9mlzgq8magspfeuf.jpg",
+      "fuel": "Petrol",
+      "capcity": "5",
+      "availability": true,
+      "id": 1,
+      "location": "Bopal"
+    },
+    {
+      "model": "toyota",
+      "price": "1000",
+      "image": "http://res.cloudinary.com/harshitalogicrays1/image/upload/v1728023874/lgcjcsfxiz9zbfielutr.png",
+      "fuel": "Diesel",
+      "capcity": "5",
+      "availability": true,
+      "id": 2,
+      "location": "Navrangpura"
+    },
+    {
+      "model": "aqwq",
+      "price": "4000",
+      "image": "http://res.cloudinary.com/harshitalogicrays1/image/upload/v1728371237/z5e4s0eilifs0jyyxlai.jpg",
+      "fuel": "Diesel",
+      "capcity": "2",
+      "availability": true,
+      "id": 3,
+      "location": "Vastrapur"
+    },
+    {
+      "model": "q",
+      "price": "13131",
+      "image": "http://res.cloudinary.com/harshitalogicrays1/image/upload/v1728369860/tduonkldhofjksydhsj1.jpg",
+      "fuel": "Diesel",
+      "capcity": "2",
+      "availability": false,
+      "id": 4,
+      "location": "Gota"
+    },
+    {
+      "model": "eqqe",
+      "price": "2323",
+      "image": "http://res.cloudinary.com/harshitalogicrays1/image/upload/v1728370063/vuefaeignjvkszrfmkta.png",
+      "fuel": "Diesel",
+      "capcity": "2",
+      "availability": true,
+      "id": 5,
+      "location": "Chandkheda"
+    },
+    {
+      "model": "eqqe",
+      "price": "4000",
+      "image": "http://res.cloudinary.com/harshitalogicrays1/image/upload/v1728370121/mqnhf7l3l9s5nwbuawwb.jpg",
+      "fuel": "Diesel",
+      "capcity": "221",
+      "availability": true,
+      "id": 6,
+      "location": "Chandkheda"
+    }
+  ],
+  "bookings": [],
+  "rentals": [],
+  "sliders": [
+    {
+      "title": "image",
+      "desc": "descrwrwrwrwrwrw",
+      "image": "http://res.cloudinary.com/harshitalogicrays1/image/upload/v1728373058/hljl4vrg1hevketctg14.jpg",
+      "id": 1
+    },
+    {
+      "title": "weqe",
+      "desc": "qeq",
+      "image": "http://res.cloudinary.com/harshitalogicrays1/image/upload/v1728372758/vinjcp7pio3aoglozadh.jpg",
+      "id": 2
+    },
+    {
+      "title": "weqe",
+      "desc": "qeqeqeqeqeq",
+      "image": "http://res.cloudinary.com/harshitalogicrays1/image/upload/v1728372768/gtlh7eh0htm9fqcqk9ru.jpg",
+      "id": 3
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+react hook form - 
+=============================================================
+To optimize the code , to increase the performance of code - 
+
+function definition store in cache -> useCallback hook 
+
+useMemo - cache the result of a calculation 
+
+===================================================
+ref - 
+
+class component - 

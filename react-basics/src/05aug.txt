@@ -1,0 +1,27 @@
+lifting the state up  -
+counter App ->
+button -> click -> 1 
+
+    state variable ->  parent 
+    button ->  children 
+
+    parent to child ----> props 
+    App - <A name=""></A>
+
+    A- props.name 
+
+==========================================================
+10th Aug - Test 11:00 to 12:00 - written paper 
+12th Aug  - react hook form , useCallback and useEffect hook 
+
+
+formik library - 
+react hook form  - 
+required 
+minlength 
+maxlength 
+min 
+max 
+pattern 
+validate
+

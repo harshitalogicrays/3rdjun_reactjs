@@ -1,0 +1,14 @@
+state  - 
+
+
+ref  -
+in rconst  - 
+this.myRef = React.createRef()
+this.focusef = createRef()
+
+====================================================================
+
+class life cycle methods   -  
+1. mounting phase 
+2. updating phase 
+3. unmounting phase 

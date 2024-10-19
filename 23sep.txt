@@ -1,0 +1,48 @@
+state mgmt - 
+context -  react 16
+
+state mgmt tools - 
+3rd party tools  -
+flux 
+redux  - predicatable state container for javascript apps
+@reduxjs/toolkit 
+
+context           				redux 
+inbuilt             			3rd party
+1 app - multiple context 	    only one store 
+
+localStorage /sessionStorage - browser 
+
+=====================================================
+1. store  (collection of state)
+2. reducers - pure function
+3. action - event fire 
+4. state - data 
+5. view  - react 
+
+view---> action ----> reducers-------> store 
+
+store --------> view 
+
+customer 
+shopkeeper 
+shelf 
+state - data - cake , cup cake , muffins, browine , chocolates,bread , cookies etc.
+
+
+customer --------------->shopkeeper --------> shelf (cake)
+         BUY_CAKE          functions		store (state)
+		 (cheesecake)      (Reducer)
+		(action)
+
+shelf -----------------> customer
+
+seller -----------------> shopkeeper------------> shelf(cake)
+         SELL_CAKE         functions
+		 (Action)
+		 
+view --> dispatch action ----> reducer -------> store 
+			useDispatch()
+			
+store ----> select -----> view 
+			useSelector()

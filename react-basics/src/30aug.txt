@@ -1,0 +1,23 @@
+forms -
+1. controlled comp -  react manages it 
+    state 
+    useState() hook - variable - init. 
+2. uncontrolled comp - DOM itself 
+ref - reference 
+return current property 
+useRef() hook 
+
+state vs ref 
+
+=================================================================
+class comp -  this 
+props 
+event 
+state 
+ref 
+class life cycle methods 
+error boundary
+pure component 
+HOC - higher order component
+=====================================================
+Context  
