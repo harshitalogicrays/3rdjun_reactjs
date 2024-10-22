@@ -2,12 +2,11 @@ import React, { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../redux/authSlice';
+import { selectId, selectIsLoggedIn } from '../redux/authSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { calculateprice } from './hiddenlinks';
-
-
+import axios from 'axios';
 
 const RenatlModal = ({car,isOpen,onClose}) => {
     const navigate = useNavigate()
@@ -16,17 +15,34 @@ const RenatlModal = ({car,isOpen,onClose}) => {
     const [endDate,setEndDate]=useState()
     const today=new Date()
     const isLoggedIn = useSelector(selectIsLoggedIn)
+    const userId=useSelector(selectId)
+
     const handleRentNow=async()=>{
         if(isLoggedIn){
             if(!startDate || !endDate){toast.error("please select both the dates");return}
             else if(endDate<startDate){toast.error('end date can be less than start date');return}
             else {
                 const totalPrice = calculateprice(car.price,startDate,endDate)
-                const rentdata={
+                const rentalData={
                     carId:car.id,model:car.model,fuel:car.fuel,
                     startDate:startDate.toISOString(),
                     endDate:endDate.toISOString(),
-                    totalPrice
+                    totalPrice,userId
+                }
+                try {
+                  const existing  =  await axios.get(`${import.meta.env.VITE_URL}/rentals?userId=${userId}&carId=${car.id}&startDate=${startDate.toISOString()}`)
+                  const existingRental =  existing.data //[{}]
+                  if(existingRental.length!=0){
+                    await axios.put(`${import.meta.env.VITE_URL}/rentals/${existingRental[0].id}`, rentalData);
+                  }
+                  else{ 
+                   await axios.post(`${import.meta.env.VITE_URL}/rentals`, rentalData);
+                  }
+                  navigate('/checkout', { state: { rentalDetails: { ...rentalData } } }); // Use useNavigate        
+                  toast.success('Rental confirmed!')
+                  onClose(); 
+                } catch (err) {    
+                  toast.error('Could not rent the car. Please try again.')
                 }
             }
         }
@@ -59,7 +75,7 @@ const RenatlModal = ({car,isOpen,onClose}) => {
             </div>
         </div>
         <div className="modal-footer">
-        <button type="button" className="btn btn-primary" onClick={handleRentNow}>Confirm Booking</button>
+        <button type="button" className="btn btn-primary" onClick={handleRentNow}>Confirm Rental</button>
           <button type="button" className="btn btn-secondary" onClick={onClose}>Close</button>
 
         </div>

@@ -13,15 +13,19 @@ import AddSliderImage from "./components/Admin/AddSliderImage";
 import ViewSliderImage from "./components/Admin/ViewSliderImage";
 import Cars from "./components/Cars";
 import CarDetails from "./components/CarDetails";
+import Checkout from "./components/Checkout";
+import CheckoutPayment from "./components/CheckoutPayment";
 
 const router  = createBrowserRouter([
     {path:'/',element:<App/>,
         children:[
             {path:'',element:<Home/>},
-            {path:'/login',element:<Login/>},
-            {path:'/register',element:<Register/>},
-            {path:'/cars',element:<Cars/>},
-            {path:'/car/details/:id',element:<CarDetails/>},
+            {path:'login',element:<Login/>},
+            {path:'register',element:<Register/>},
+            {path:'cars',element:<Cars/>},
+            {path:'car/details/:id',element:<CarDetails/>},
+            {path:'checkout',element:<Checkout/>},
+            {path:'checkoutpayment',element:<CheckoutPayment/>}
         ]
     },
     {path:'/admin',element:<AdminLayout/>,

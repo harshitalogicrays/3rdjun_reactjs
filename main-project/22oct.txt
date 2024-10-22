@@ -1,0 +1,7 @@
+paypal 
+rozarpay
+paytm 
+
+stripe - backend - nodejs 
+
+npm init --y -=> creates package.json

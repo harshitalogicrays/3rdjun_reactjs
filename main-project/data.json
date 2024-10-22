@@ -80,7 +80,28 @@
     }
   ],
   "bookings": [],
-  "rentals": [],
+  "rentals": [
+    {
+      "carId": 1,
+      "model": "hundai",
+      "fuel": "Petrol",
+      "startDate": "2024-10-21T18:30:00.000Z",
+      "endDate": "2024-10-23T18:30:00.000Z",
+      "totalPrice": 8000,
+      "userId": 2,
+      "id": 1
+    },
+    {
+      "carId": 2,
+      "model": "toyota",
+      "fuel": "Diesel",
+      "startDate": "2024-10-30T18:30:00.000Z",
+      "endDate": "2024-11-01T18:30:00.000Z",
+      "totalPrice": 2000,
+      "userId": 2,
+      "id": 2
+    }
+  ],
   "sliders": [
     {
       "title": "image",
