@@ -21,7 +21,7 @@ const Checkout = () => {
   const handlePayment = (e) => {
     e.preventDefault()
     dispatch(STORE_RENTAL({...rentalDetails,...deliveryInfo}))
-    navigate('/chekoutpayment')
+    navigate('/checkoutpayment')
   }
 
   return (

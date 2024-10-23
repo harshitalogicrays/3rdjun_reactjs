@@ -25,7 +25,7 @@ const Login = () => {
             else{
               toast.success("loggedIn successfully")
                 let redirectTo = location.state ? location.state.from :'/'
-              navigate(redirectTo)
+              navigate(redirectTo ,{state:{startDate:location.state?.startDate ?? undefined,endDate:location.state?.endDate ?? undefined}})
             }  
             let obj = {email:data[0].email,name:data[0].username,id:data[0].id,role:data[0].role} 
             dispatch(LOGIN_USER(obj))  

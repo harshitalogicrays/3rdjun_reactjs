@@ -9,11 +9,9 @@ const AdminHeader = ({openSideBar}) => {
     const navigate = useNavigate()
     const isLoggedIn = useSelector(selectIsLoggedIn)
     let handleLogout = () => {
-        if (isLoggedIn) {
             dispatch(LOGOUT_USER())
             toast.success("LoggedOut Successfully")
             navigate('/')
-        }
     }
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -23,8 +21,8 @@ const AdminHeader = ({openSideBar}) => {
                 <div className="collapse navbar-collapse justify-content-end">
                     <ul className="navbar-nav">
                         <li className="nav-item"> <a className="nav-link">Welcome Admin</a>   </li>
-                        <li className="nav-item">
-                            <button className="nav-link" onClick={handleLogout}> Logout</button>
+                        <li className="nav-item" onClick={handleLogout}>
+                            <button className="nav-link" > Logout</button>
                         </li>
                     </ul>
                 </div>

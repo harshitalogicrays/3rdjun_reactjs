@@ -33,6 +33,6 @@ export const ProtectedAdmin = ({children})=>{
 }
 
 export const calculateprice=(price,startDate,endDate)=>{
-    const days = (endDate-startDate)/(1000*60*60*24)
+    const days = (endDate-startDate)/(1000*60*60*24) //0
     return days>0?days*price :0
 }

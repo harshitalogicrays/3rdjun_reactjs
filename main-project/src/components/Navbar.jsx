@@ -33,8 +33,7 @@ useEffect(()=>{
     let [search,setSearch] =useState('')
     useEffect(()=>{
       dispatch(FILTER_BY_SEARCH({cars,search}))
-      if(search =='' || search== undefined || search ==null){navigate('/')}
-      else navigate('/cars')
+      if(search !=null){navigate('/cars')}
     },[search])
     
     const handleSearch=(e)=>{

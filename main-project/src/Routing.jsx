@@ -15,6 +15,7 @@ import Cars from "./components/Cars";
 import CarDetails from "./components/CarDetails";
 import Checkout from "./components/Checkout";
 import CheckoutPayment from "./components/CheckoutPayment";
+import Rentals from "./components/Admin/Rentals";
 
 const router  = createBrowserRouter([
     {path:'/',element:<App/>,
@@ -37,6 +38,7 @@ const router  = createBrowserRouter([
             {path:'addslider',element:<AddSliderImage/>},
             {path:'viewslider',element:<ViewSliderImage/>},
             {path:'editslider/:id',element:<AddSliderImage/>},
+            {path:'rentals',element:<Rentals/>},
         ]
     },
     {path:"*",element:<PageNotFound/>}

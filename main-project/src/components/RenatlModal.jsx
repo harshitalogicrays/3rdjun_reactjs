@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import { useSelector } from 'react-redux';
@@ -16,6 +16,15 @@ const RenatlModal = ({car,isOpen,onClose}) => {
     const today=new Date()
     const isLoggedIn = useSelector(selectIsLoggedIn)
     const userId=useSelector(selectId)
+
+    console.log(location)
+    useEffect(()=>{
+      if(location.state){
+        let {startDate,endDate}=location.state
+        setStartDate(startDate)
+        setEndDate(endDate)
+      }
+    },[location])
 
     const handleRentNow=async()=>{
         if(isLoggedIn){
@@ -46,7 +55,7 @@ const RenatlModal = ({car,isOpen,onClose}) => {
                 }
             }
         }
-       else { navigate('/login',{state:{from:location.pathname}})}
+       else { navigate('/login',{state:{from:location.pathname,startDate:startDate,endDate:endDate}})}
     }
   return (
     <>
