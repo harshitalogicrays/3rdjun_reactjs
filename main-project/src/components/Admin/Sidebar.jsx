@@ -14,6 +14,7 @@ const Sidebar = ({open,close}) => {
         {id:4,to:'/admin/addslider',text:"Add Slider Image"},
         {id:5,to:'/admin/viewslider',text:"View Slider Image"},
         {id:6,to:'/admin/rentals',text:"Rentals"},
+        {id:7,to:'/admin/bookings',text:"Bookings"},
       ]
   return (
     <div className="sidebar" style={contentStyle}>

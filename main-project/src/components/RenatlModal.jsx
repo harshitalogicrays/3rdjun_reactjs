@@ -36,7 +36,8 @@ const RenatlModal = ({car,isOpen,onClose}) => {
                     carId:car.id,model:car.model,fuel:car.fuel,
                     startDate:startDate.toISOString(),
                     endDate:endDate.toISOString(),
-                    totalPrice,userId
+                    totalPrice,userId,
+                    location:car.location
                 }
                 try {
                   const existing  =  await axios.get(`${import.meta.env.VITE_URL}/rentals?userId=${userId}&carId=${car.id}&startDate=${startDate.toISOString()}`)

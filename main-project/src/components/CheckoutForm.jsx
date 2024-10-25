@@ -5,6 +5,7 @@ import { selectRentalInfo } from '../redux/rentalSlice';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { selectEmail } from '../redux/authSlice';
 
 const CheckoutForm = () => {
   const navigate = useNavigate()
@@ -13,6 +14,7 @@ const CheckoutForm = () => {
     const rentalDetails = useSelector(selectRentalInfo)
     const [message, setMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const userEmail = useSelector(selectEmail)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,18 +30,19 @@ const CheckoutForm = () => {
           if(res.paymentIntent){
               if(res.paymentIntent.status=="succeeded"){
                 try{
-                  await axios.post(`${import.meta.env.VITE_URL}/bookings`,{...rentalDetails,status:'pending'})
+                  const res1 = await axios.post(`${import.meta.env.VITE_URL}/bookings`,{...rentalDetails,status:'pending',userEmail:userEmail})
+                  console.log(res1.data)
                   const existing  =  await axios.get(`${import.meta.env.VITE_URL}/rentals?userId=${rentalDetails.userId}&carId=${rentalDetails.carId}&startDate=${new Date(rentalDetails.startDate).toISOString()}`)
                   const existingRental =  existing.data //[{}]
                   if(existingRental.length!=0){
                     await axios.delete(`${import.meta.env.VITE_URL}/rentals/${existingRental[0].id}`);
                   }
-                  //mail sent
+                  sendMail(res1.data)
                   toast.success("payment done")
+                  toast.success("booking success")
                   navigate('/')
                 }
                 catch(err){toast.error(err.message)}
-                toast.success("payment done")
               }
             }
             if(res.error){toast.error(res.error.message) ;setMessage(res.error.message);return}
@@ -50,6 +53,20 @@ const CheckoutForm = () => {
         setIsLoading(false);
       };
     
+
+      const sendMail = async(data)=>{
+        let obj = {userEmail:data.userEmail,userName:data.name,status:data.status,amount:data.totalPrice,startDate:data.startDate,endDate:data.endDate}
+        try{
+          await fetch("http://localhost:4000/mail", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(obj),
+          })
+          toast.success("mail sent successfully")
+        }
+        catch(err){toast.err(err.message)}
+      }
+
       const paymentElementOptions = { layout: "tabs" }
   return (
     <div className='container mt-5'>
@@ -57,6 +74,7 @@ const CheckoutForm = () => {
             <div className="col">
                 <h1>Rental Summary</h1>
                 <p><strong>Model:{rentalDetails.model}</strong> </p>
+                <p><strong>Location:{rentalDetails.location}</strong> </p>
                 <p><strong>From:{new Date(rentalDetails.startDate).toLocaleDateString()}</strong> </p>
                 <p><strong>To:{new Date(rentalDetails.endDate).toLocaleDateString()}</strong> </p>
                 <p><strong>Duration: {Math.ceil((new Date(rentalDetails.endDate)-new Date(rentalDetails.startDate))/(1000*60*60*24))} days</strong> </p>

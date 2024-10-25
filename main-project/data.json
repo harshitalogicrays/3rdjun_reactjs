@@ -23,6 +23,22 @@
       "cpassword": "happy123",
       "role": "1",
       "id": 3
+    },
+    {
+      "username": "smit",
+      "email": "smitughaliya2",
+      "password": "",
+      "cpassword": "",
+      "role": "1",
+      "id": 4
+    },
+    {
+      "username": "smit",
+      "email": "smitughaliya@gmail.com",
+      "password": "smit123",
+      "cpassword": "smit123",
+      "role": "1",
+      "id": 5
     }
   ],
   "cars": [
@@ -88,11 +104,116 @@
     }
   ],
   "bookings": [
-
+    {
+      "carId": 1,
+      "model": "hundai",
+      "fuel": "Petrol",
+      "startDate": "2024-10-29T18:30:00.000Z",
+      "endDate": "2024-11-01T18:30:00.000Z",
+      "totalPrice": 12000,
+      "userId": 2,
+      "name": "qeqeq",
+      "phone": "qeqe",
+      "address": "qeqeq",
+      "apartment": "eqeq",
+      "area": "eqeqeq",
+      "pincode": "eqeqeqeqe",
+      "status": "pending",
+      "id": 1
+    },
+    {
+      "carId": 3,
+      "model": "aqwq",
+      "fuel": "Diesel",
+      "startDate": "2024-10-24T18:30:00.000Z",
+      "endDate": "2024-10-25T18:30:00.000Z",
+      "totalPrice": 4000,
+      "userId": 3,
+      "location": "Vastrapur",
+      "name": "aaa",
+      "phone": "aaw",
+      "address": "wrw",
+      "apartment": "wrwr",
+      "area": "wrwr",
+      "pincode": "wrwr",
+      "status": "pending",
+      "id": 2
+    },
+    {
+      "carId": 3,
+      "model": "aqwq",
+      "fuel": "Diesel",
+      "startDate": "2024-10-24T18:30:00.000Z",
+      "endDate": "2024-10-25T18:30:00.000Z",
+      "totalPrice": 4000,
+      "userId": 3,
+      "location": "Vastrapur",
+      "name": "wrwr",
+      "phone": "rwr",
+      "address": "rwr",
+      "apartment": "wrwr",
+      "area": "wrwrw",
+      "pincode": "rwr",
+      "status": "pending",
+      "id": 3
+    },
+    {
+      "carId": 3,
+      "model": "aqwq",
+      "fuel": "Diesel",
+      "startDate": "2024-10-24T18:30:00.000Z",
+      "endDate": "2024-10-25T18:30:00.000Z",
+      "totalPrice": 4000,
+      "userId": 3,
+      "location": "Vastrapur",
+      "name": "wew",
+      "phone": "wrw",
+      "address": "wrw",
+      "apartment": "wrw",
+      "area": "wrwr",
+      "pincode": "wrw",
+      "status": "pending",
+      "id": 4
+    },
+    {
+      "carId": 1,
+      "model": "hundai",
+      "fuel": "Petrol",
+      "startDate": "2024-10-24T18:30:00.000Z",
+      "endDate": "2024-10-31T18:30:00.000Z",
+      "totalPrice": 28000,
+      "userId": 5,
+      "location": "Bopal",
+      "name": "smit",
+      "phone": "lkhk",
+      "address": "jkhjh",
+      "apartment": "jhjhj",
+      "area": "hkjhj",
+      "pincode": "hkjhkjh",
+      "status": "pending",
+      "id": 5
+    },
+    {
+      "carId": 6,
+      "model": "eqqe",
+      "fuel": "Diesel",
+      "startDate": "2024-10-29T18:30:00.000Z",
+      "endDate": "2024-11-01T18:30:00.000Z",
+      "totalPrice": 12000,
+      "userId": 5,
+      "location": "Chandkheda",
+      "name": "smit",
+      "phone": "klkl",
+      "address": "kl,jl.j",
+      "apartment": "kljlkjlk",
+      "area": "jlkjlk",
+      "pincode": "jkljlk",
+      "status": "approved",
+      "userEmail": "smitughaliya@gmail.com",
+      "id": 6
+    }
   ],
-  "rentals": [
-
-  ],
+  "rentals": [],
   "sliders": [
     {
       "title": "image",

@@ -16,6 +16,8 @@ import CarDetails from "./components/CarDetails";
 import Checkout from "./components/Checkout";
 import CheckoutPayment from "./components/CheckoutPayment";
 import Rentals from "./components/Admin/Rentals";
+import Bookings from "./components/Admin/Bookings";
+import ViewBooking from "./components/Admin/ViewBooking";
 
 const router  = createBrowserRouter([
     {path:'/',element:<App/>,
@@ -39,6 +41,8 @@ const router  = createBrowserRouter([
             {path:'viewslider',element:<ViewSliderImage/>},
             {path:'editslider/:id',element:<AddSliderImage/>},
             {path:'rentals',element:<Rentals/>},
+            {path:'bookings',element:<Bookings/>},
+            {path:'bookings/view/:id',element:<ViewBooking/>}
         ]
     },
     {path:"*",element:<PageNotFound/>}

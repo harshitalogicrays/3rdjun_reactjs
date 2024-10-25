@@ -32,6 +32,7 @@ const Checkout = () => {
         <div className='col-4'>
           <h4>Rental Summary</h4>
           <p><strong>Model:{rentalDetails.model}</strong> </p>
+          <p><strong>Location:{rentalDetails.location}</strong> </p>
           <p><strong>From:{new Date(rentalDetails.startDate).toLocaleDateString()}</strong> </p>
           <p><strong>To:{new Date(rentalDetails.endDate).toLocaleDateString()}</strong> </p>
           <p><strong>Duration: {Math.ceil((new Date(rentalDetails.endDate)-new Date(rentalDetails.startDate))/(1000*60*60*24))} days</strong> </p>
